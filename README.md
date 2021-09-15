@@ -3,6 +3,57 @@
 * **MUHAMMAD RIZKY ATHALLAH** - *1906398982* - *B*
 
 ---
+## Tutorial 2
+### What I have learned today
+###Pertanyaan 1
+Setelah dirun, masih terjadi error karena template belum dibuat. Sedangkan pada implementasi kode
+pada Controller, method untuk mapping ke link tersebut sudah mereturn nama html. Namun html belum 
+dibuat.
+###Pertanyaan 2
+<b>@Autowired</b> merupakan implementasi dari konsep Dependecy Injections. Dengan menggunakan autowired,
+data yang didapatkan dari apa yang diimplementasikan pada bagian controller akan langsung tersambung 
+dengan instance yang berada pada bagian service. Pada kasus ini, ketika kita melakukan perubahan instance
+travelAgensiService pada bagian controller, maka data tersebut akan dibagikan ke bagian service sehingga
+data yang sudah disimpan pada request-request sebelumnya tetap tersimpan.
+###Pertanyaan 3
+Setelah mengakses link tersebut untuk melakukan add Agensi, terjadi error karena
+parameter yang diberikan pada link tersebut tidak terdapat noTelepon yang 
+seharusnya pada implementasi kode harus tertera pada request parameter.
+###Pertanyaan 4
+Untuk melihat detail sebuah travel agensi, kita dapat menggunakan mapping yang 
+sesuai,yaitu "/agensi/view?idAgensi=xx", sehingga link yang bisa digunakan:
+http://localhost:8080/agensi/view?idAgensi=1 karena Papa APAP memiliki idAgensi 1
+###Pertanyaan 5
+link: http://localhost:8080/agensi/add?idAgensi=2&namaAgensi=Mama%20AMAM&alamat=Universitas%20Indonesia&noTelepon=123xxx <br>
+Setelah Add:
+![img.png](img.png)
+Tampak View All
+![img_1.png](img_1.png)
+
+###Latihan
+1. Fitur: Mencari daftar agensi berdasarkan nama Agensi.
+Diakses pada link http://localhost:8080/agensi/view/nama-agensi/Papa%20APAP
+![img_2.png](img_2.png)
+2. Fitur: Meng-update idAgensi Agensi. Implementasi fungsi update dibuat pada bagian Service. Diakses pada link
+http://localhost:8080/agensi/update/1/id-agensi/2
+Bukti id berubah:<br>
+a. Menambahkan data dengan id 1
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
+b. Meng-update id dari data dengan id 1
+![img_5.png](img_5.png)
+c. Id 1 telah berubah jadi 2
+![img_6.png](img_6.png)
+3. Remove data by id
+a. Menambahkan data dengan id 1
+![img_7.png](img_7.png)
+![img_8.png](img_8.png)
+b. Melakukan remove, dan hasil remove bisa dilihat dengan hilangnya data pada viewAll
+![img_9.png](img_9.png)
+
+
+
+---
 ## Tutorial 1
 ### What I have learned today
 Pada Tutorial 1 kali ini, saya telah cukup memahami cara menggunakan Git secara lebih mendalam.
