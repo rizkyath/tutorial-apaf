@@ -39,17 +39,17 @@ http://localhost:8080/agensi/update/1/id-agensi/2
 Bukti id berubah:<br>
 a. Menambahkan data dengan id 1
 ![img_3.png](img_3.png)
-![img_4.png](img_4.png)
+![img_4.png](img_4.png)<br>
 b. Meng-update id dari data dengan id 1
-![img_5.png](img_5.png)
+![img_5.png](img_5.png)<br>
 c. Id 1 telah berubah jadi 2
-![img_6.png](img_6.png)
+![img_6.png](img_6.png)<br>
 3. Remove data by id
 a. Menambahkan data dengan id 1
 ![img_7.png](img_7.png)
-![img_8.png](img_8.png)
+![img_8.png](img_8.png)<br>
 b. Melakukan remove, dan hasil remove bisa dilihat dengan hilangnya data pada viewAll
-![img_9.png](img_9.png)
+![img_9.png](img_9.png)<br>
 
 
 
