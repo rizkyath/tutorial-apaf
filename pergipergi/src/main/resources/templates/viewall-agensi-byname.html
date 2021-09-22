@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <title th:text="'Daftar Agensi dengan nama ' + ${namaAgensi}"></title>
+</head>
+<body>
+<h2 th:text="'Daftar Agensi dengan nama ' + ${namaAgensi}"></h2>
+<div th:each="agensi: ${listAgensi}">
+    <h3 th:text="'Id Agensi     : ' + ${agensi.idAgensi}"></h3>
+    <h3 th:text="'Nama Agensi   : ' + ${agensi.namaAgensi}"></h3>
+    <h3 th:text="'Alamat Agensi : ' + ${agensi.alamat}"></h3>
+    <h3 th:text="'No Telepon    : ' + ${agensi.noTelepon}"></h3>
+</div>
+</body>
+</html>
