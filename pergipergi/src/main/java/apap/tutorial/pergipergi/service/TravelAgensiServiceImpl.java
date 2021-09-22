@@ -1,50 +1,42 @@
 package apap.tutorial.pergipergi.service;
 
 import apap.tutorial.pergipergi.model.TravelAgensiModel;
+import apap.tutorial.pergipergi.repository.TravelAgensiDb;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional
 public class TravelAgensiServiceImpl implements TravelAgensiService {
-    private List<TravelAgensiModel> listAgensi;
 
-    public TravelAgensiServiceImpl(){
-        listAgensi = new ArrayList<>();
-    }
+    @Autowired
+    TravelAgensiDb travelAgensiDb;
 
     @Override
     public void addAgensi(TravelAgensiModel travelAgensiModel){
-        listAgensi.add(travelAgensiModel);
+        travelAgensiDb.save(travelAgensiModel);
     }
 
     @Override
     public List<TravelAgensiModel> getListAgensi(){
-        return listAgensi;
+        return travelAgensiDb.findAllByOrderByNamaAgensiAsc();
     }
 
     @Override
-    public TravelAgensiModel getAgensiByidAgensi(String idAgensi){
-        for (TravelAgensiModel travelAgensiModel : getListAgensi()){
-            if (idAgensi.equals(travelAgensiModel.getIdAgensi())){
-                return travelAgensiModel;
-            }
-        }
-        return null;
+    public TravelAgensiModel getAgensiByNoAgensi(Long noAgensi){
+        Optional<TravelAgensiModel> agensi = travelAgensiDb.findByNoAgensi(noAgensi);
+        if(agensi.isPresent()) return agensi.get();
+        else return null;
     }
 
     @Override
-    public void updateIdAgensi(String id_old, String id_new){
-        TravelAgensiModel agensi = getAgensiByidAgensi(id_old);
-        agensi.setIdAgensi(id_new);
+    public TravelAgensiModel updateAgensi(TravelAgensiModel travelAgensi) {
+        travelAgensiDb.save(travelAgensi);
+        return travelAgensi;
     }
 
-    @Override
-    public void removeByIdAgensi(String idAgensi){
-        for (int i=0; i<listAgensi.size(); i++){
-            if (idAgensi.equals(listAgensi.get(i).getIdAgensi())){
-                listAgensi.remove(i);
-            }
-        }
-    }
 }
