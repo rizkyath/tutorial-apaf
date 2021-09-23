@@ -76,4 +76,21 @@ public class TravelAgensiController {
         return "update-agensi";
     }
 
+    @RequestMapping("/agensi/delete/{noAgensi}")
+    public String deleteAgensi(
+            @PathVariable(value = "noAgensi") Long noAgensi,
+            Model model
+    ){
+        TravelAgensiModel toBeDeletedAgensi = travelAgensiService.getAgensiByNoAgensi(noAgensi);
+        if (travelAgensiService.delAvail(toBeDeletedAgensi)){
+            travelAgensiService.deleteByNoAgensi(noAgensi);
+            model.addAttribute("noAgensi", noAgensi);
+            return "delete-agensi";
+        } else {
+            String errorMsg = "Agensi masih buka, delete Agensi tidak berhasil";
+            model.addAttribute("errorMsg", errorMsg);
+            return "error-page";
+        }
+
+    }
 }

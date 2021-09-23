@@ -26,6 +26,7 @@
                         <p th:if="${guide.jenisKelamin == 1}">Jenis Kelamin : Laki-laki</p>
                         <br>
                         <a class="btn btn-primary" th:href="@{/tour-guide/update/} + ${guide.noTourGuide}">Update Guide</a>
+                        <a class="btn btn-danger" th:href="@{/tour-guide/delete/} + ${guide.noTourGuide}">Delete Guide</a>
                         <hr>
                     </div>
                 </div>

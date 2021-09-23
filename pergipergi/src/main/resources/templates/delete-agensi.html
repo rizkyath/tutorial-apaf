@@ -8,9 +8,9 @@
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2 th:text="${errorMsg}"></h2>
+                <h2 th:text="'Agensi dengan nomor ' + ${noAgensi} + ' berhasil dihapus.'"></h2>
                 <br>
-                <a class="home" href="/">Home</a>
+                <a class="btn btn-primary" th:href="@{/agensi/viewall}">Kembali</a>
             </div>
         </div>
     </div>

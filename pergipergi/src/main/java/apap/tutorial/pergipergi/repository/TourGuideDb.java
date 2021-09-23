@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface TourGuideDb extends JpaRepository<TourGuideModel, Long> {
     TourGuideModel getByNoTourGuide(long noTourGuide);
+    Long deleteTourGuideModelByNoTourGuide(long noTourGuide);
 }

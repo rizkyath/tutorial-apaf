@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface TravelAgensiDb extends JpaRepository<TravelAgensiModel, Long> {
     Optional<TravelAgensiModel> findByNoAgensi(Long noAgensi);
     List<TravelAgensiModel> findAllByOrderByNamaAgensiAsc();
+    Long deleteTravelAgensiModelByNoAgensi(Long noAgensi);
 }

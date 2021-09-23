@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
 
@@ -63,13 +60,34 @@ public class TourGuideController {
             Model model
     ){
         TravelAgensiModel agensi = guide.getAgensi();
-        if(agensi.getWaktuBuka().compareTo(LocalTime.now()) > 0 && LocalTime.now().compareTo(agensi.getWaktuTutup()) > 0){
+        if(travelAgensiService.isTutup(agensi)){
             TourGuideModel updatedTourGuide = tourGuideService.updateTourGuide(guide);
-            model.addAttribute("noTourGuide", guide.getNoTourGuide());
-            model.addAttribute("noAgensi", guide.getAgensi().getNoAgensi());
+            model.addAttribute("noTourGuide", updatedTourGuide.getNoTourGuide());
+            model.addAttribute("noAgensi", updatedTourGuide.getAgensi().getNoAgensi());
             return "update-tour-guide";
         }
         else{
+            String errorMsg = "Agensi masih buka, update tour guide tidak berhasil";
+            model.addAttribute("errorMsg", errorMsg);
+            return "error-page";
+        }
+    }
+
+    @RequestMapping("tour-guide/delete/{noTourGuide}")
+    public String deleteTourGuide(
+            @PathVariable(value = "noTourGuide") Long noTourGuide,
+            Model model
+    ){
+        TourGuideModel guide = tourGuideService.getByNoTourGuide(noTourGuide);
+        TravelAgensiModel agensi = guide.getAgensi();
+        if (travelAgensiService.isTutup(agensi)){
+            tourGuideService.deleteTourGuideByNoTourGuide(noTourGuide);
+            model.addAttribute("noTourGuide", noTourGuide);
+            model.addAttribute("noAgensi", guide.getAgensi().getNoAgensi());
+            return "delete-tour-guide";
+        } else {
+            String errorMsg = "Agensi masih buka, delete tour guide tidak berhasil";
+            model.addAttribute("errorMsg", errorMsg);
             return "error-page";
         }
     }

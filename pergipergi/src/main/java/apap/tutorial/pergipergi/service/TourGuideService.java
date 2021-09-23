@@ -6,4 +6,5 @@ public interface TourGuideService {
     void addTourGuide(TourGuideModel tourGuide);
     TourGuideModel getByNoTourGuide(Long noTourGuide);
     TourGuideModel updateTourGuide(TourGuideModel guide);
+    TourGuideModel deleteTourGuideByNoTourGuide(Long noGuide);
 }

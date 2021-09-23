@@ -1,11 +1,13 @@
 package apap.tutorial.pergipergi.service;
 
+import apap.tutorial.pergipergi.model.TourGuideModel;
 import apap.tutorial.pergipergi.model.TravelAgensiModel;
 import apap.tutorial.pergipergi.repository.TravelAgensiDb;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,4 +41,30 @@ public class TravelAgensiServiceImpl implements TravelAgensiService {
         return travelAgensi;
     }
 
+    @Override
+    public TravelAgensiModel deleteByNoAgensi(Long noAgensi) {
+        TravelAgensiModel deletedAgensi = getAgensiByNoAgensi(noAgensi);
+        travelAgensiDb.deleteTravelAgensiModelByNoAgensi(noAgensi);
+        return deletedAgensi;
+    }
+
+    @Override
+    public boolean isTutup(TravelAgensiModel agensi){
+        LocalTime waktuBuka = agensi.getWaktuBuka();
+        LocalTime waktuTutup = agensi.getWaktuTutup();
+        LocalTime sekarang = LocalTime.now();
+        if (sekarang.compareTo(waktuBuka) < 0 || sekarang.compareTo(waktuTutup) > 0)
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public boolean delAvail(TravelAgensiModel agensi){
+        List<TourGuideModel> listGuide = agensi.getListTourGuide();
+        if (isTutup(agensi) && listGuide.size() == 0)
+            return true;
+        else
+            return false;
+    }
 }
