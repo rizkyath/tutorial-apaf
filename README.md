@@ -2,6 +2,17 @@
 ## Authors
 * **MUHAMMAD RIZKY ATHALLAH** - *1906398982* - *B*
 
+## Tutorial 4
+### Pertanyaan 1
+- **th:include** berarti fragment atau konten akan masuk di dalam objek htmlnya (objek html menjadi pembungkus)
+- **th:replce** berarti fragment atau konten akan menggantikan posisi objek html, sehingga objek htmlnya tidak menjadi pembunkus fragment
+### Pertanyaan 2
+**th:object** digunakan untuk menginisiasi objek yang kemudian data yang dikirim bisa diterima Spring berdasarkan 
+tabel data yang bersesuaian
+### Pertanyaan 3
+- '$' digunakan untuk inisiasi suatu variable yang dikirimkan melalui spring controller.
+- '*' digunakan untuk mengambil atribut dari data yang dideclare sebelumnya menggunakan tanda '$'.
+
 ## Tutorial 3
 ### Pertanyaan 1
 - **@AllArgsConstructor** membuat constructor pada suatu class dengan parameternya adalah semua field pada class (masing-masing field satu parameter)

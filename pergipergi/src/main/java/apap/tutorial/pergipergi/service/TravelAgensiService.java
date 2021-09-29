@@ -1,6 +1,5 @@
 package apap.tutorial.pergipergi.service;
 
-import apap.tutorial.pergipergi.model.TourGuideModel;
 import apap.tutorial.pergipergi.model.TravelAgensiModel;
 import java.util.List;
 

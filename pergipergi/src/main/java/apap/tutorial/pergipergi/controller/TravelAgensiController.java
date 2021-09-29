@@ -1,8 +1,8 @@
 package apap.tutorial.pergipergi.controller;
 
+import apap.tutorial.pergipergi.model.DestinasiModel;
 import apap.tutorial.pergipergi.model.TourGuideModel;
 import apap.tutorial.pergipergi.model.TravelAgensiModel;
-import apap.tutorial.pergipergi.service.TourGuideService;
 import apap.tutorial.pergipergi.service.TravelAgensiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,9 +49,11 @@ public class TravelAgensiController {
     ){
         TravelAgensiModel agensi = travelAgensiService.getAgensiByNoAgensi(noAgensi);
         List<TourGuideModel> listTourGuide = agensi.getListTourGuide();
+        List<DestinasiModel> listDestinasi = agensi.getListDestinasi();
 
         model.addAttribute("agensi", agensi);
         model.addAttribute("listTourGuide", listTourGuide);
+        model.addAttribute("listDestinasi", listDestinasi);
 
         return "view-agensi";
     }
