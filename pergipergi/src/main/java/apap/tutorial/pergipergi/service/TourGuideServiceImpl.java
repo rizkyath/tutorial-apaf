@@ -32,9 +32,10 @@ public class TourGuideServiceImpl implements TourGuideService {
     }
 
     @Override
-    public TourGuideModel deleteTourGuideByNoTourGuide(Long noGuide){
-        TourGuideModel deletedTourGuide = getByNoTourGuide(noGuide);
-        tourGuideDb.deleteTourGuideModelByNoTourGuide(noGuide);
-        return deletedTourGuide;
+    public TourGuideModel deleteTourGuide(TourGuideModel guide){
+        Long noTourGuide = guide.getNoTourGuide();
+        tourGuideDb.deleteTourGuideModelByNoTourGuide(noTourGuide);
+        return guide;
     }
+
 }

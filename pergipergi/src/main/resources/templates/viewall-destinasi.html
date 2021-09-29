@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+  <title>PergiPergi</title>
+  <meta charset="UTF-8">
+  <title>Agensi</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar('Destinasi')"></nav>
+<div class="container">
+  <div class="card m-4 p-4">
+    <div class="card-body">
+      <div class="justify-content-center">
+        <h2>List Agensi</h2>
+        <br>
+        <div th:if="${listDestinasi.size() != 0}">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Nomor Destinasi</th>
+              <th>Negara Destinasi</th>
+              <th>Visa</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dest, iterationStatus : ${listDestinasi}">
+              <td th:text="${dest.noDestinasi}"></td>
+              <td th:text="${dest.negaraDestinasi}"></td>
+              <td th:if="${dest.isBebasVisa} == ${true}">Bebas</td>
+              <td th:if="${dest.isBebasVisa} == ${false}">Visa</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div th:unless="${listDestinasi.size() != 0}">
+          <h2 th:text="'Destinasi belum ditambahkan ke Database'"></h2>
+        </div>
+        <br>
+        <a class="btn btn-primary" href="/">Home</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>

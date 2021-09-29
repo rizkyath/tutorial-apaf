@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <title>PergiPergi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"></head>
+    <meta charset="UTF-8">
+    <title>Agensi</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
 <body>
+<nav th:replace="fragments/fragment :: navbar('Agensi')"></nav>
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
@@ -16,19 +20,43 @@
                 <p th:text="'Nomor Telepon: ' + ${agensi.noTeleponAgensi}"></p>
                 <p th:text="'Waktu Buka: ' + ${agensi.waktuBuka}"></p>
                 <p th:text="'Waktu Tutup: ' + ${agensi.waktuTutup}"></p>
-                <div class="col">
-                    <br>
-                    <h4>Tour Guide : </h4>
-                    <hr>
-                    <div th:each="guide : ${listTourGuide}">
-                        <p th:text="'Nama : ' + ${guide.namaTourGuide}"></p>
-                        <p th:if="${guide.jenisKelamin == 0}">Jenis Kelamin : Perempuan</p>
-                        <p th:if="${guide.jenisKelamin == 1}">Jenis Kelamin : Laki-laki</p>
-                        <br>
-                        <a class="btn btn-primary" th:href="@{/tour-guide/update/} + ${guide.noTourGuide}">Update Guide</a>
-                        <a class="btn btn-danger" th:href="@{/tour-guide/delete/} + ${guide.noTourGuide}">Delete Guide</a>
-                        <hr>
-                    </div>
+                <br><h4> Tour Guide </h4><br>
+                <div th:if="*{listTourGuide.size() != 0}">
+                    <form th:action="@{/tour-guide/delete}" th:object="${agensi}" method="POST">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>No Tour Guide</th>
+                                <th>Nama Tour Guide</th>
+                                <th>Jenis Kelamin</th>
+                                <th></th>
+                                <th>Hapus</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="tourGuide, iterationStatus : ${listTourGuide}"
+                                th:style="${iterationStatus.even} ? 'font-weight: bold;'">
+                                <td th:text="${iterationStatus.count}"></td>
+                                <td th:text="${tourGuide.noTourGuide}"></td>
+                                <td th:text="${tourGuide.namaTourGuide}"></td>
+                                <td th:if="${tourGuide.jenisKelamin} == 1">Laki-laki</td>
+                                <td th:if="${tourGuide.jenisKelamin} == 0">Perempuan</td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" th:href="@{/tour-guide/update/} + ${tourGuide.noTourGuide}"> Update</a>
+                                </td>
+                                <td>
+                                    <input class="form-check-input" type="checkbox" th:field="*{listTourGuide}"
+                                    th:value="${tourGuide.noTourGuide}" id="flexCheckDefault">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <input type="submit" value="Delete yang dipilih" class="btn btn-danger">
+                    </form>
+                </div>
+                <div th:unless="*{listTourGuide.size() != 0}">
+                    <h2 th:text="'Tidak ada Tour Guide'"></h2>
                 </div>
                 <br>
                 <a class="btn btn-primary" href="/agensi/viewall">Kembali</a>
