@@ -2,6 +2,34 @@
 ## Authors
 * **MUHAMMAD RIZKY ATHALLAH** - *1906398982* - *B*
 
+## Tutorial 3
+### Pertanyaan 1
+- **@AllArgsConstructor** membuat constructor pada suatu class dengan parameternya adalah semua field pada class (masing-masing field satu parameter)
+- **@NoArgsConstructor** membuat constructor pada class tanpa parameter yang menginisiasi field
+- **@Setter** dan **@Getter** digunakan untuk meng-generate setter dan getter field pada class yang dapat menghubungkannya dengan database
+- **@Entity** memberikan penanda bahwa class yang akan dibuat dibawahnya merupakan entity yang akan dibuat pada database
+- **@Table** menginsiasi database untuk membuat tabel baru dengan nama yang sesuai
+### Pertanyaan 2
+Method *findByNoAgensi* digunakan untuk mendapatkan suatu agensi yang tersimpan pada database berdasarkan field noAgensi.
+Apabila tidak ditemukan, method tersebut dapat mengembalikan null.
+### Pertanyaan 3
+**@JoinColumn** menyimpan id dari table yang dijoin dalam sebuah kolom baru<br>
+**@JoinTable** menyimpan id dari kedua table dan membuat table baru yang berisi relationship kedua table dan isinya
+### Pertanyaan 4
+**name** digunakan untuk menyatakan relasi many-to-one dengan entity travel_agensi dengan menggunakan 
+atribut identifier TravelAgensi yang sudah terbuat pada database (dalam hal ini 'no_agensi').<br>
+**referencedColumnName** diambil berdasarkan atribut identifier pada class TravelAgensiModel (bukan 
+pada database), yaitu atribut noAgensi untuk mengatur logika many-to-one dengan class TravelAgensiModel<br>
+**nullable** merupakan anotasi untuk mendeclare bahwa kolom tersebut tidak dapat bernilai null. Sedangkan,
+anotasi **@NotNull** digunakan oleh java untuk melakukan validasi, apakah field yang akan diisi bernilai
+null atau tidak
+### Pertanyaan 5
+- **FetchType.Lazy** melakukan fetch hanya apabila fetch dibutuhkan
+- **FetchType.EAGER** fetch dilakukan secara langsung
+- **CascadeType.ALL** akan melakukan semua tindakan (PERSIST, REMOVE, REFRESH, MERGE, DETACH)
+
+
+
 ---
 ## Tutorial 2
 ### What I have learned today
