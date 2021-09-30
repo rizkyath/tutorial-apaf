@@ -16,36 +16,53 @@
                 <br>
                 <form th:action="@{/agensi/add}" th:object="${agensi}" method="POST">
                     Nama Agensi : <br>
-                    <input class="form-control" type="text" name="namaAgensi"/>
+                    <input class="form-control" type="text" name="namaAgensi" th:value="${agensi.namaAgensi} != null ? ${agensi.namaAgensi} : ''"/>
                     <br><br>
 
                     Alamat Agensi: <br>
-                    <input class="form-control" type="text" name="alamatAgensi"/>
+                    <input class="form-control" type="text" name="alamatAgensi" th:value="${agensi.alamatAgensi} != null ? ${agensi.alamatAgensi} : ''"/>
                     <br><br>
 
                     Nomor Telepon : <br>
-                    <input class="form-control" type="text" name="noTeleponAgensi"/>
+                    <input class="form-control" type="text" name="noTeleponAgensi" th:value="${agensi.noTeleponAgensi} != null ? ${agensi.noTeleponAgensi} : ''"/>
                     <br><br>
 
                     Waktu Buka : <br>
-                    <input required class="form-control" type="time" name="waktuBuka" />
+                    <input required class="form-control" type="time" name="waktuBuka" th:value="${agensi.waktuBuka} != null ? ${agensi.waktuBuka} : ''"/>
                     <br><br>
 
                     Waktu Tutup : <br>
-                    <input required class="form-control" type="time" name="waktuTutup" />
+                    <input required class="form-control" type="time" name="waktuTutup" th:value="${agensi.waktuTutup} != null ? ${agensi.waktuTutup} : ''"/>
                     <br><br>
 
                     <table class="table">
                         <thead>
                         <tr>
                             <th>Negara Destinasi</th>
-                            <th><a class="btn btn-primary" href="/">Tambah Row</a></th>
+                            <th><button class="btn btn-primary" type="submit" value="tambah-row" name="tambah-row">Tambah Row</button></th>
                         </tr>
                         </thead>
                         <tbody>
+                        <tr th:each="negara : *{listDestinasi}">
+                            <td>
+                                <select name="negaraDestinasi" class="custom-select" th:field="*{listDestinasi}">
+                                    <option th:each="dest : ${listDestinasi}"
+                                            th:value="${dest.noDestinasi}"
+                                            th:text="${dest.negaraDestinasi}"></option>
+                                    <option selected="selected" th:value="${negara.noDestinasi}" th:text="${negara.negaraDestinasi}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" name="hapus-row" th:value="" type="button">Hapus</button></th>
+                            </td>
+                        </tr>
                         <tr id="new-input">
                             <td>
-                                <input class="form-control" name="negaraDestinasi" placeholder="Negara Destinasi" aria-label="Search">
+                                <select name="negaraDestinasi" class="custom-select" th:field="*{listDestinasi}">
+                                    <option th:each="dest : ${listDestinasi}"
+                                            th:value="${dest.noDestinasi}"
+                                            th:text="${dest.negaraDestinasi}"></option>
+                                </select>
                             </td>
                             <td>
                                 <a class="btn btn-danger">Hapus</a></th>
@@ -55,7 +72,7 @@
                     </table>
 
 
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-primary" type="submit" name="save-data" value="save-data">Submit</button>
                     <a class="btn btn-primary" href="/">Home</a>
                 </form>
             </div>
