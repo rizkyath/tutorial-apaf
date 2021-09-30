@@ -43,7 +43,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="negara : *{listDestinasi}">
+                        <tr th:each="negara, iterationStat : *{listDestinasi}">
                             <td>
                                 <select name="negaraDestinasi" class="custom-select" th:field="*{listDestinasi}">
                                     <option th:each="dest : ${listDestinasi}"
@@ -53,7 +53,7 @@
                                 </select>
                             </td>
                             <td>
-                                <button class="btn btn-danger" name="hapus-row" th:value="" type="button">Hapus</button></th>
+                                <button class="btn btn-danger" name="hapus-row" th:value="${iterationStat.index}" type="submit">Hapus</button></th>
                             </td>
                         </tr>
                         <tr id="new-input">

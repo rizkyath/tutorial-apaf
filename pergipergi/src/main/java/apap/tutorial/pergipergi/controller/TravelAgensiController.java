@@ -55,16 +55,20 @@ public class TravelAgensiController {
         return "form-add-agensi";
     }
 
-//    @PostMapping(value="/agensi/add", params = {"hapus-row"})
-//    public String addAgensiHapusRow(
-//            @ModelAttribute TravelAgensiModel agensi,
-//            Model model
-//    ){
-//
-//        model.addAttribute("agensi", agensi);
-//        model.addAttribute("listDestinasi", destinasiService.getListDestinasi());
-//        return "form-add agensi";
-//    }
+    @PostMapping(value="/agensi/add", params = {"hapus-row"})
+    public String addAgensiHapusRow(
+            @ModelAttribute TravelAgensiModel agensi,
+            @RequestParam(value="hapus-row") int idx,
+            Model model
+    ){
+        List<DestinasiModel> listDestinasi = agensi.getListDestinasi();
+        listDestinasi.remove(idx);
+        listDestinasi.remove(listDestinasi.size()-1);
+        model.addAttribute("agensi", agensi);
+        model.addAttribute("listDestinasi", destinasiService.getListDestinasi());
+        agensi.setListDestinasi(listDestinasi);
+        return "form-add-agensi";
+    }
 
     @GetMapping("/agensi/viewall")
     public String listAgensi(Model model) {

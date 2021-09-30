@@ -56,13 +56,13 @@
                             </tbody>
                         </table>
                         <input type="submit" value="Delete yang dipilih" class="btn btn-danger">
-                        <a class="btn btn-primary" th:href="@{/tour-guide/add/} + ${agensi.noAgensi}">Tambah Guide</a>
                     </form>
                 </div>
                 <div th:unless="*{listTourGuide.size() != 0}">
                     <h2 th:text="'Tidak ada Tour Guide'"></h2>
                 </div>
                 <br>
+                <a class="btn btn-primary" th:href="@{/tour-guide/add/} + ${agensi.noAgensi}">Tambah Guide</a><br><br>
                 <div th:if="${listDestinasi.size() != 0}">
                     <table class="table">
                         <thead>
