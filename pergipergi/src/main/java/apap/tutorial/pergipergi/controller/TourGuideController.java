@@ -73,22 +73,15 @@ public class TourGuideController {
         }
     }
 
-    @RequestMapping("tour-guide/delete/{noTourGuide}")
-    public String deleteTourGuide(
-            @PathVariable(value = "noTourGuide") Long noTourGuide,
+    @PostMapping("/tour-guide/delete")
+    public String deleteTourGuideSubmit(
+            @ModelAttribute TravelAgensiModel agensi,
             Model model
     ){
-        TourGuideModel guide = tourGuideService.getByNoTourGuide(noTourGuide);
-        TravelAgensiModel agensi = guide.getAgensi();
-        if (travelAgensiService.isTutup(agensi)){
-            tourGuideService.deleteTourGuideByNoTourGuide(noTourGuide);
-            model.addAttribute("noTourGuide", noTourGuide);
-            model.addAttribute("noAgensi", guide.getAgensi().getNoAgensi());
-            return "delete-tour-guide";
-        } else {
-            String errorMsg = "Agensi masih buka, delete tour guide tidak berhasil";
-            model.addAttribute("errorMsg", errorMsg);
-            return "error-page";
+        model.addAttribute("noAgensi", agensi.getNoAgensi());
+        for (TourGuideModel guide : agensi.getListTourGuide()){
+            tourGuideService.deleteTourGuide(guide);
         }
+        return "delete-tour-guide";
     }
 }

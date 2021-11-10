@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <title>PergiPergi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"></head>
+    <meta charset="UTF-8">
+    <title>Add Agensi</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
 <body>
+<nav th:replace="fragments/fragment :: navbar('Agensi')"></nav>
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
@@ -12,26 +16,63 @@
                 <br>
                 <form th:action="@{/agensi/add}" th:object="${agensi}" method="POST">
                     Nama Agensi : <br>
-                    <input class="form-control" type="text" name="namaAgensi"/>
+                    <input class="form-control" type="text" name="namaAgensi" th:value="${agensi.namaAgensi} != null ? ${agensi.namaAgensi} : ''"/>
                     <br><br>
 
                     Alamat Agensi: <br>
-                    <input class="form-control" type="text" name="alamatAgensi"/>
+                    <input class="form-control" type="text" name="alamatAgensi" th:value="${agensi.alamatAgensi} != null ? ${agensi.alamatAgensi} : ''"/>
                     <br><br>
 
                     Nomor Telepon : <br>
-                    <input class="form-control" type="text" name="noTeleponAgensi"/>
+                    <input class="form-control" type="text" name="noTeleponAgensi" th:value="${agensi.noTeleponAgensi} != null ? ${agensi.noTeleponAgensi} : ''"/>
                     <br><br>
 
                     Waktu Buka : <br>
-                    <input required class="form-control" type="time" name="waktuBuka" />
+                    <input required class="form-control" type="time" name="waktuBuka" th:value="${agensi.waktuBuka} != null ? ${agensi.waktuBuka} : ''"/>
                     <br><br>
 
                     Waktu Tutup : <br>
-                    <input required class="form-control" type="time" name="waktuTutup" />
+                    <input required class="form-control" type="time" name="waktuTutup" th:value="${agensi.waktuTutup} != null ? ${agensi.waktuTutup} : ''"/>
                     <br><br>
 
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Negara Destinasi</th>
+                            <th><button class="btn btn-primary" type="submit" value="tambah-row" name="tambah-row">Tambah Row</button></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="negara, iterationStat : *{listDestinasi}">
+                            <td>
+                                <select name="negaraDestinasi" class="custom-select" th:field="*{listDestinasi}">
+                                    <option th:each="dest : ${listDestinasi}"
+                                            th:value="${dest.noDestinasi}"
+                                            th:text="${dest.negaraDestinasi}"></option>
+                                    <option selected="selected" th:value="${negara.noDestinasi}" th:text="${negara.negaraDestinasi}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" name="hapus-row" th:value="${iterationStat.index}" type="submit">Hapus</button></th>
+                            </td>
+                        </tr>
+                        <tr id="new-input">
+                            <td>
+                                <select name="negaraDestinasi" class="custom-select" th:field="*{listDestinasi}">
+                                    <option th:each="dest : ${listDestinasi}"
+                                            th:value="${dest.noDestinasi}"
+                                            th:text="${dest.negaraDestinasi}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger">Hapus</a></th>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                    <button class="btn btn-primary" type="submit" name="save-data" value="save-data">Submit</button>
                     <a class="btn btn-primary" href="/">Home</a>
                 </form>
             </div>
