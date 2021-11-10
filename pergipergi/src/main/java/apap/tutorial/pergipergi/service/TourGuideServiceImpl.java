@@ -22,7 +22,7 @@ public class TourGuideServiceImpl implements TourGuideService {
 
     @Override
     public TourGuideModel getByNoTourGuide(Long noTourGuide){
-        return tourGuideDb.getByNoTourGuide(noTourGuide);
+        return tourGuideDb.getTourGuideModelByNoTourGuide(noTourGuide);
     }
 
     @Override

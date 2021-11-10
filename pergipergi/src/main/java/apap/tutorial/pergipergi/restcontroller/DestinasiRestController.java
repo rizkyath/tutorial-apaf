@@ -49,7 +49,7 @@ public class DestinasiRestController {
             return destinasiRestService.getDestinasiByNoDestinasi(noDestinasi);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "No Agensi " + String.valueOf(noDestinasi) + " Not Found."
+                    HttpStatus.NOT_FOUND, "No Destinasi " + String.valueOf(noDestinasi) + " Not Found."
             );
         }
     }

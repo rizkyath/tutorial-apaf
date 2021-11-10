@@ -77,7 +77,8 @@ public class TravelAgensiRestServiceImpl implements TravelAgensiRestService {
     @Override
     public Mono<String> getStatus(Long noAgensi) {
         return this.webClient.get().uri("/rest/agensi/" + noAgensi + "/status")
-                .retrieve().bodyToMono(String.class);
+                .retrieve()
+                .bodyToMono(String.class);
     }
 
     @Override

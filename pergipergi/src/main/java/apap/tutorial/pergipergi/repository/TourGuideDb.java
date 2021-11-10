@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TourGuideDb extends JpaRepository<TourGuideModel, Long> {
-    TourGuideModel getByNoTourGuide(long noTourGuide);
+    TourGuideModel getTourGuideModelByNoTourGuide(long noTourGuide);
     Long deleteTourGuideModelByNoTourGuide(long noTourGuide);
 }
