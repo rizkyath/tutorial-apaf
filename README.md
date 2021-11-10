@@ -2,6 +2,29 @@
 ## Authors
 * **MUHAMMAD RIZKY ATHALLAH** - *1906398982* - *B*
 
+## Tutorial 5
+### Pertanyaan 1
+> Postman merupakan aplikasi yang bisa digunakan untuk melakukan API testing. Postman memfasilitasi HTTP Client untuk 
+melakukan test terhadap HTTP request. Postman dapat membantu kita untuk menjalankan method-method yang tidak bisa 
+dijalankan dengan menggunkaan URL Browser, serperti method PUT, DELETE, POST, dan lain-lain.
+
+### Pertanyaan 2
+> **@JsonIgnoreProperties** digunakan untuk mengabaikan logical properties untuk serialization atau deserialization JSON,
+sehingga data mudah untuk dihubungkan
+
+> **@JsonProperty** digunakan untuk melakukan mapping terhadap key dari property name dalam JSON saat melakukan 
+serialization atau deserialization
+
+### Pertanyaan 3
+> WebClient merpupakan interface yang bisa digunakan untuk melakukan pemanggilan method rest, seperti GET, POST, PUT,
+PATCH, DELETE, dan lain-lain
+
+### Pertanyaan 4
+> ResponseEntity merepresentasikan HTTP response yang diberikan ketika suatu method telah dijalankan. HTTP response ini 
+meliputi header, body, dan status
+
+> BindingResult
+
 ## Tutorial 4
 ### Pertanyaan 1
 - **th:include** berarti fragment atau konten akan masuk di dalam objek htmlnya (objek html menjadi pembungkus)
