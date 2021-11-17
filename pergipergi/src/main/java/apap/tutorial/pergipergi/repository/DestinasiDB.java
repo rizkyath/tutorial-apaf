@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface DestinasiDB extends JpaRepository<DestinasiModel, Long> {
     Optional<DestinasiModel> findByNegaraDestinasi(String negaraDestinasi);
+    DestinasiModel getDestinasiModelByNoDestinasi(Long noDestinasi);
 }
