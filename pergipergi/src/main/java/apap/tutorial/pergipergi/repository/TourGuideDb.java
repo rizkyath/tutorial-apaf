@@ -4,10 +4,9 @@ import apap.tutorial.pergipergi.model.TourGuideModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 
 @Repository
 public interface TourGuideDb extends JpaRepository<TourGuideModel, Long> {
-    TourGuideModel getByNoTourGuide(long noTourGuide);
+    TourGuideModel getTourGuideModelByNoTourGuide(long noTourGuide);
     Long deleteTourGuideModelByNoTourGuide(long noTourGuide);
 }
