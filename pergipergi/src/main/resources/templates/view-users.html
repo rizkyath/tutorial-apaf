@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Agensi</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2>List User</h2>
+                <br>
+                <a th:href="@{/user/add}" sec:authorize="hasAuthority('Admin')" class="mx-2 btn btn-outline-primary">Tambah User</a>
+                <br><br>
+                <div class="justify-content-center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>email</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="user, iterationStatus : ${listUser}">
+                            <td th:text="${user.username}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td style="width: 35px">
+                                <a type="button" class="btn btn-danger btn-sm" th:href="@{/user/delete/} + ${user.id}">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <a class="btn btn-primary" href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

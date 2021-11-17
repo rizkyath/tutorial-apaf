@@ -13,6 +13,9 @@
             <div class="justify-content-center">
                 <h2>Tambah User</h2>
                 <br>
+                <div th:if="${msg == 0}">
+                    <p style="color: red">Password harus mengandung angka, huruf besar, huruf kecil, dan simbol serta minimal memiliki 8 karakter!</p>
+                </div>
                 <form th:action="@{/user/add}" th:object="${user}" method="POST">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control"/>
