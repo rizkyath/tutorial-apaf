@@ -64,7 +64,7 @@ export default class Home extends React.Component {
                                 <List
                                     title="My Cart"
                                     items={this.state.cartItems}
-                                    onItemClick={() => {}}
+                                    onItemClick={this.handleDeleteItemFromCart}
                                 ></List>
                             </div>
                         ) : <div className="col-sm">
@@ -84,25 +84,38 @@ export default class Home extends React.Component {
 
     handleAddItemToCart = (item) => {
         const newItems = [...this.state.cartItems];
+        const balance = [this.state.balance];
         const newItem = {...item};
+        const newItemPrice = newItem.price;
         const targetInd = newItems.findIndex((it) => it.id === newItem.id);
 
-        if (targetInd < 0) {
-            newItem.inCart = true;
-            newItems.push(newItem);
-            this.updateShopItem(newItem,true);
+        const newBalance = balance - newItemPrice;
+        if (newBalance < 0) {
+            alert("Balance not sufficient");
+        } else {
+            if (targetInd < 0) {
+                newItem.inCart = true;
+                newItems.push(newItem);
+                this.updateShopItem(newItem,true);
+            }
+            this.setState({ cartItems: newItems });
+            this.setState({ balance: parseFloat(newBalance.toFixed(2)) });
         }
-        this.setState({ cartItems: newItems });
     };
 
-    // handleDeleteItemFromCart = (item) => {
-    //     const newItem = {...item};
-    //     const targetInd = newItems.findIndex((it) => it.id === newItem.id);
+    handleDeleteItemFromCart = (item) => {
+        const newItems = [...this.state.cartItems];
+        const itemDelete = {...item};
+        const balance = [this.state.balance];
+        const itemDeletePrice = itemDelete.price.toFixed(2);
 
-    //     if (targetInd < 0) {
-            
-    //     }
-    // }
+        const newBalance = parseFloat(balance) + parseFloat(itemDeletePrice);
+        
+        itemDelete.inCart = false;
+        this.updateShopItem(itemDelete, false);
+        this.setState({cartItems: newItems.filter((it) => it.id != itemDelete.id)});
+        this.setState({ balance: newBalance });
+    }
 
     updateShopItem = (item, inCart) => {
         const tempShopItems = this.state.shopItems;
