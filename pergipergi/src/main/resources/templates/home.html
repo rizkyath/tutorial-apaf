@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -11,6 +11,7 @@
 
 <div class="d-flex justify-content-center">
     <div class="m-4">
+        <h2 th:text="'Hello ' + ${#httpServletRequest.remoteUser} + '!'">Masuk sebagai</h2>
         <h2> Selamat datang di PergiPergi!</h2><br>
         <div class="d-flex justify-content-center">
             <a th:href="@{/agensi/viewall}" class="mx-2 btn btn-primary">View All Agensi</a>
@@ -18,13 +19,14 @@
         </div>
         <div class="my-3 d-flex justify-content-center">
             <a th:href="@{/destinasi/viewall}" class="mx-2 btn btn-primary">View All Destinasi</a>
-            <a th:href="@{/destinasi/add}" class="mx-2 btn btn-outline-primary">Add Destinasi</a>
+            <a th:href="@{/destinasi/add}" sec:authorize="hasAuthority('Agen')" class="mx-2 btn btn-outline-primary">Add Destinasi</a>
+        </div>
+        <div class="my-3 d-flex justify-content-center">
+            <a th:href="@{/user/view-users}" sec:authorize="hasAuthority('Admin')" class="mx-2 btn btn-primary">Lihat Users</a>
+            <a th:href="@{/user/change-password/} + ${#httpServletRequest.remoteUser}" class="mx-2 btn btn-outline-primary">Update Password</a>
         </div>
     </div>
 </div>
 
-
 </body>
-
-<footer th:replace="fragments/fragment :: time-stamp"></footer>
 </html>

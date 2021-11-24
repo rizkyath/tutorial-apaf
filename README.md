@@ -1,6 +1,32 @@
 # Tutorial APAP
 ## Authors
-* **MUHAMMAD RIZKY ATHALLAH** - *1906398982* - *B*
+* **MUHAMMAD RIZKY ATHLLAH** - *1906398982* - *B*
+
+## Tutorial 6
+### Pertanyaan 1
+> **Otentikasi** merupakan mekanisme yang dilakukan sebuah aplikasi untuk mengetahui siapa yang sedang mengakses aplikasi.
+Konsep ini diimplementasikan pada class WebSecurityConfig, UserDetailsServiceImpl, dan data terkait user disimpan pada 
+model untuk digunakan pada class-class yang disebutkan sebelumnya
+
+> **Otorisasi** merupakan mekanisme yang dilakukan aplikasi untuk menyesuaikan apa saja wewenang yang bisa diperoleh suatu role
+Konsep ini diimplementasikan pada class WebSecurityConfig, dan pada bagian html (untuk menyesuaikan role dengan aksesibilitas fitur)
+
+### Pertanyaan 2
+> **BCryptPasswordEncoder** merupakan default implementation dari algoritma BCrypt yang digunakan untuk melakukan hashing 
+password. Algoritma ini dijalankan dengan cara secara otomatis menghasilkan dan menggunakan random salt untuk menghitung hash,
+itulah sebabnya setiap kali kita memanggilnya, kita bisa mendapatkan output yang berbeda.
+
+### Pertanyaan 3
+> Best practicenya password menggunakan hashing, bukan enkripsi. Hal tersebut karena apabila password dienkripsi, masih
+memungkinkan untuk didekripsi, sedangkan apabila kita menggunakan hashing, hasil hash tidak mungkin dapat didekripsi.
+
+### Pertanyaan 4
+> UUID adalah Universally unique identifier, yang dapat membantu kita mendapatkan unique id secara universal, yang mana
+kemungkinannya sangat kecil untuk mendapatkan id yang sama pada suatu sistem.
+
+### Pertanyaan 5
+> Class UserDetailsServiceImpl.java digunakan untuk melakukan retrieving data dari database yang kita miliki mengenai
+data user, yang kemudian digunakan untuk proses otentikasi
 
 ## Tutorial 5
 ### Pertanyaan 1
