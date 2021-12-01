@@ -2,6 +2,41 @@
 ## Authors
 * **MUHAMMAD RIZKY ATHLLAH** - *1906398982* - *B*
 
+## Tutorial 7
+### Pertanyaan 1
+- Latihan 1:<br>
+Pada lattihan ini, saya manambahkan fungsi **handleDeleteItemFromCart** dengan memodifikasi fungsi yang sebelumnya sudah ada,
+yaitu handleAddItemToCart. Cara kerjanya adalah dengan cara meng-filter list yang ada agar state cartItems difilter dan 
+bebas dari object yang ingin dihapus. Berikut implementasi kodenya:<br>
+![img_10.png](img_10.png)<br>
+![img_11.png](img_11.png)<br>
+- Latihan 2:<br>
+Pada latihan ini, saya menambahkan logic pada fungsi **handleDeleteItemFromCart** dan **handleAddItemToCart** dengan 
+mengambil nilai balance dari state, kemudian menyesuaikan logic untuk setiap fungsinya, yaitu apabila manambah barang berarti
+balance berkurang, dan sebaliknya. Berikut implementasi kodenya:<br>
+![img_12.png](img_12.png)<br>
+![img_13.png](img_13.png)<br>
+- Latihan 3:<br>
+Pada latihan ini, saya hanya menambahkan kondisi yang sesuai apabila saat menjalankan fungsi **handleAddItemToCart** balance
+baru bernilai negatif, maka alert akan muncul, dan item tidak dimasukkan ke dalam cart list. Berikut implementasi kodenya:<br>
+![img_14.png](img_14.png)<br>
+
+### Pertanyaan 2
+> Berdasarkan eksplorasi saya dalam tutorial kali ini, perbedaan antara props dan state adalah bahwa state merupakan sesuatu
+yang dimiliki komponen secara internal dan dikontrol oleh komponen itu sendiri, sedangkan props bisa diambil dari komponen lain
+dan bisa dikontrol oleh komponen lain yang menggunakan (merender) komponen yang memiliki props tersebut.
+
+### Pertanyaan 3
+> Komponen sebaiknya digunakan dalam implementasi react agar setiap komponen yang diimplementasikan akan bersifat reusable,
+walaupun secara kompleksitas akan lebih rumit.
+
+### Pertanyaan 4
+> Functional component berupa simple javascript yang mereturn html UI dalam setiap komponennya.
+> Class component berupa component-component yang disimpan, dimana harus dilakukan rendering untuk diimplementasikan pada html utama.
+
+### Pertanyaan 5
+> Element merupakan suatu komponen yang belum dirender, namun component bisa dibilang juga sebagai component object yang sudah dirender
+
 ## Tutorial 6
 ### Pertanyaan 1
 > **Otentikasi** merupakan mekanisme yang dilakukan sebuah aplikasi untuk mengetahui siapa yang sedang mengakses aplikasi.
