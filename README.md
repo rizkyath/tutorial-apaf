@@ -7,6 +7,14 @@
 > Pada latihan 1, setelah kita mengisi form dan submit isi form tersebut untuk mengcreate, agar form tidak terisi dengan item 
 yang sebelumnya terisi, kita perlu mengosongkan kembali state yang sebelumnya diset untuk item yang diisi.
 
+### Pertanyaan 2
+> 
+
+### Pertanyaan 3
+> 
+
+### Pertanyaan 4
+> 
 
 ## Tutorial 7
 ### Pertanyaan 1
