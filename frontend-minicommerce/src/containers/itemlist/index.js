@@ -61,7 +61,7 @@ class ItemList extends Component {
                 quantity: item.quantity
             };
             console.log(item.id);
-            APIConfig.delete(`/item/${item.id}`);
+            await APIConfig.delete(`/item/${item.id}`);
             this.loadData();
         } catch (error) {
             alert("Oops terjadi masalah pada server");
@@ -104,6 +104,7 @@ class ItemList extends Component {
         this.handleCancel(event);
     }
     componentDidMount() {
+        console.log("componentDidMount()")
         this.loadData();
     }
     async handleSubmitEditItem(event) {
