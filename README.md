@@ -4,6 +4,37 @@
 
 ## Tutorial 7
 ### Pertanyaan 1
+> Pada latihan 1, setelah kita mengisi form dan submit isi form tersebut untuk mengcreate, agar form tidak terisi dengan item 
+yang sebelumnya terisi, kita perlu mengosongkan kembali state yang sebelumnya diset untuk item yang diisi.
+
+### Pertanyaan 2
+> fungsi async mengembalikan promise yang digunakan untuk event berikutnya setelah promise difulfill.<br>
+> funsi await digunakan untuk mem-pause async function yang sedang brejalan, menunggu hingga promis di await function 
+difulfill, baru kemudian melanjutkan async function.
+
+### Pertanyaan 3
+![img_17.png](img_17.png)<br>
+![img_16.png](img_16.png)<br>
+> Pada pengerjaan latihan ini, ketika dilakukan console.log dilakukan pada setiap fungsi, fungsi yang dijalankan hanyalah
+componentDidMount(), sedangkan fungsi shouldComponentUpdate tidak dijalankan karena fungsi-fungsi yang dijalankan ketika 
+component sudah dicreate dan diinsert ke dalam DOM. componentDidMount merupakan fungsi mounting, sehingga hal tersebut 
+membuat fungsi componentDidMount berjalan. Sedangkan, pada fungsi shouldComponentUpdate(), componen harus mengalami perubahan
+props atau state terlebih dahulu.
+
+### Pertanyaan 4
+- fungsi componentDidMount dipanggil ketika component dicreate dan diinsert ke DOM. Fungsi ini biasanya dipanggil ketika 
+component baru diakses, sehingga harus melakukan ajax call ke api yang dituju.
+- fungsi shouldComponentUpdate dipanggil ketika component mengalami perubahan state atau props. Funsi ini biasanya dipanggil
+ketika component melakukan perubahan data (misal edit, delete)
+- fungsi componentDidUpdate dipanggil sebelum dan sesudah component melakukan re-render. Fungsi ini biasanya dipanggil ketika 
+component telah melakukan manual work yang dilakukan diluar react.
+- fungsi componentWillReceiveProps dipanggil ketika state atau props diubah pada komponen. Fungsi ini biasanya dipanggil 
+sebelum sebuah component me-receive props yang akan diubah nilainya.
+- fungsi componentWillUnmount dipanggil ketika sebuah component dihapus dari DOM, dimana fungsi ini melakukan clean-up 
+data pada DOM.
+
+## Tutorial 7
+### Pertanyaan 1
 - Latihan 1:<br>
 Pada lattihan ini, saya manambahkan fungsi **handleDeleteItemFromCart** dengan memodifikasi fungsi yang sebelumnya sudah ada,
 yaitu handleAddItemToCart. Cara kerjanya adalah dengan cara meng-filter list yang ada agar state cartItems difilter dan 
