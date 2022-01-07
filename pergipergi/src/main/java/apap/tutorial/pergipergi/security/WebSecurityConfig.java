@@ -20,8 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/user/view-users").hasAuthority("Admin")
-                .antMatchers("/user/add").hasAuthority("Admin")
+//                .antMatchers("/user/view-users").hasAuthority("Admin")
+//                .antMatchers("/user/add").hasAuthority("Admin")
                 .antMatchers("/destinasi/add").hasAuthority("Agen")
                 .anyRequest().authenticated()
                 .and()
@@ -37,19 +37,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .passwordEncoder(encoder())
-//                .withUser("tirta").password(encoder().encode("toronto")).roles("USER");
-//    }
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .passwordEncoder(encoder())
+                .withUser("tirta").password(encoder().encode("toronto")).roles("USER");
+    }
 
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
-    }
+//    @Autowired
+//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+//    }
 
 }
